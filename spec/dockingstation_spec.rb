@@ -2,7 +2,7 @@ require "dockingstation"
 describe DockingStation do
   it { is_expected.to respond_to(:release_bike) }
 
-  it "gets bike" do 
+  it "gets bike" do
     station = DockingStation.new
     expect(station.release_bike).not_to eq nil
   end
@@ -10,5 +10,10 @@ describe DockingStation do
     station = DockingStation.new
     bike = station.release_bike
     expect(bike.working?).to eq true
+  end
+
+  it "return bike" do
+    station = DockingStation.new
+    expect(station.return_bike).to eq nil
   end
 end
