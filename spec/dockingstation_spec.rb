@@ -16,4 +16,12 @@ describe DockingStation do
     station = DockingStation.new
     expect(station.return_bike).to eq nil
   end
+
+  describe 'dock_bike' do
+    it " stores a bike argument as an attribute of a Docking station instance" do
+      bike = Bike.new
+      expect{subject.dock_bike(bike)}.to eq bike
+    end
+  end
+  end
 end
