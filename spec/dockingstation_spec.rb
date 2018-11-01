@@ -1,27 +1,29 @@
 require "dockingstation"
+
 describe DockingStation do
-  it { is_expected.to respond_to(:release_bike) }
+  it { is_expected.to respond_to :release_bike }
 
-  it "gets bike" do
-    station = DockingStation.new
-    expect(station.release_bike).not_to eq nil
+  it "releases working bike" do
+    bike = subject.release_bike
+    expect(bike).to be_working
   end
-  it "is it working?" do
-    station = DockingStation.new
-    bike = station.release_bike
-    expect(bike.working?).to eq true
-  end
+end
 
-  it "return bike" do
-    station = DockingStation.new
-    expect(station.return_bike).to eq nil
-  end
+require "dockingstation"
 
-  describe 'dock_bike' do
-    it " stores a bike argument as an attribute of a Docking station instance" do
+describe DockingStation do
+  it { is_expected.to respond_to(:dock).with(1) }
+end
+
+describe DockingStation do
+    it { is_expected.to respond_to :return_bike}
+end
+
+
+describe DockingStation do
+    it "it docks bike" do
       bike = Bike.new
-      expect{subject.dock_bike(bike)}.to eq bike
+      subject.dock(bike)
+      expect(subject.bike).to eq bike
     end
-  end
-  end
 end
