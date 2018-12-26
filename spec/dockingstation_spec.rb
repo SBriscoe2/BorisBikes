@@ -52,11 +52,13 @@ describe DockingStation do
   end
 end
 
-# describe DockingStation do
-#   it 'does not allow broken bikes to be released' do
-#     bike = Bike.new
-#     bike.report_broken
-#     subject.dock(bike)
-#     expect { subject.release_bike }.to raise_error 'Bike broken'
-#   end
-# end
+describe DockingStation do
+  it 'does not allow broken bikes to be released' do
+    bike = Bike.new
+    docking = DockingStation.new
+    docking.dock(bike)
+    bike.report_broken
+    docking.release_bike
+    expect { docking.release_bike }.to raise_error 'No bikes docked'
+  end
+end
